@@ -1,0 +1,19 @@
+<div class="container" style="margin-top: 20px;">
+    <div class="row">
+          <div class="col-6 offset-3">
+            <h4>Agregar novedades</h4>
+            <form action="/admin/novedades/agregar" method="post"
+            enctype="multipart/form-data">
+                <div class="mb-3 row">
+                    <input type="text" class="form-control"
+                     placeholder="Titulo" name="titulo">
+                </div>
+                <div class="mb-3 row"> {{!-- Input imagen--}}
+                  <label>Imagen<input type="file"
+                  class="form-control" name="imagen" id="imagen" /></label>
+                </div>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+        </div>
+    </div>
+</div>

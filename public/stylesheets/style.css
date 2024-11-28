@@ -1,0 +1,126 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  line-height: 20px;
+  background-image: radial-gradient(circle, rgb(0, 0, 0), rgb(36, 35, 35));
+  text-align:justify;
+}
+h2{
+  font-family:"Oswald" , "sans serif";
+  font-weight: bolder;
+  font-size: 30px;
+  text-align: center;
+}
+.holder{
+  margin: 0 auto;
+  max-width: 960px;
+}
+.holder p{
+  font-size: larger;
+}
+/* HEADER */
+.boton-nav{
+  font-size: 15px;
+  position: absolute;
+  cursor: pointer;
+  top: 40px;
+  right: 40px;
+  display: none;
+}
+
+header{
+  background-color: black;
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0px;
+  font-size: larger;
+  font-family: "open sans" , sans-serif;
+  height: 20vh;
+  z-index: 1;
+  width: 100%;
+}
+
+
+.logo img{
+  max-width: 60%;
+  min-width: 30%;
+}
+
+nav ul{
+  display: flex;
+}
+nav ul li{
+  list-style: none;
+  padding: 15px;
+}
+nav ul li a{
+  color: white;
+  text-decoration: none;
+}
+nav ul li a:hover{
+  color: rgba(159, 159, 154, 0.855);
+}
+.activo{
+  border-bottom: 1px solid white;
+}
+.activo:hover{
+  border-bottom: 1px solid rgba(159, 159, 154, 0.855);
+}
+/*END HEADER*/
+
+table{
+  background-color: rgb(154, 153, 153);
+}
+table thead tr{
+  padding: 50px;
+}
+/* FOOTER */
+footer{
+  background-color: black;
+  border-top: 1px solid white;
+  padding: 20px 20px 5px 20px;
+  margin-top: 35px;
+  font-style: oblique;
+  height: 22vh;
+}
+footer p{
+  text-align: center;
+  padding-top: 10px;
+}
+.footer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.footer ul li{
+  list-style: none;
+}
+.footernav{
+  text-align: end;
+}
+.footernav ul li{
+  padding-top:  5px;
+}
+.footernav ul li a{
+  border-bottom: 1px solid white;
+}
+.footernav ul li a:hover{
+  border-bottom: 1px solid rgba(159, 159, 154, 0.855);
+}
+ul li a{
+  color: white;
+  text-decoration: none;
+}
+ul li a:hover{
+  color: rgba(159, 159, 154, 0.855);
+
+}
+/* END FOOTER */
