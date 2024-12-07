@@ -1,30 +1,30 @@
 var express = require('express');
 var router = express.Router();
-var novedadesModel = require("../../models/novedadesModel")
+var rutinasModel = require("../../models/rutinasModel")
 var util = require("util")
 var cloudinary = require("cloudinary").v2
 var uploader = util.promisify(cloudinary.uploader.upload)
 
-//Listar novedades
+//Listar rutinas
 router.get("/", async (req, res, next) => {
   
   //recibir la info
-  var  novedades = await novedadesModel.getNovedades() // llama a la info que neccesito para poder imprmirla en el render
+  var  rutinas = await rutinasModel.getRutinas()
   
-  novedades = novedades.map(novedad => {
-    if(novedad.img_id){
-      const imagen = cloudinary.image(novedad.img_id, {
+  rutinas = rutinas.map(rutina => {
+    if(rutina.img_id){
+      const imagen = cloudinary.image(rutina.img_id, {
         width:600,
         height:300,
         crop: "fill"
       })
       return {
-        ...novedad,
+        ...rutina,
         imagen
       }
     }else{
       return{
-        ...novedad,
+        ...rutina,
         imagen: ""
       }
     }
@@ -33,8 +33,8 @@ router.get("/", async (req, res, next) => {
   res.render('admin/novedades', {
      layout: 'admin/layout',
      usuario: req.session.nombre,
-     //novedades me permite recorrerlo y imprimirlo en el hbs
-     novedades });
+     //rutinas me permite recorrerlo y imprimirlo en el hbs
+     rutinas });
      
 });
 
@@ -53,14 +53,13 @@ router.post("/agregar", async (req,res,next) => {
       imagen = req.files.imagen
       img_id = (await uploader(imagen.tempFilePath)).public_id
     }
-
     //fin cloudify
-    if(req.body.titulo != "" && req.body.subtitulo != "" && req.body.cuerpo != ""){ //Si niguno de los datos pasados esta vacio se ejecuta
+    if(req.body.titulo != "" && req.body.subtitulo != "" && req.body.cuerpo != ""){ 
        
-      await novedadesModel.insertNovedad({
+      await rutinasModel.insertRutina({
         ...req.body,
         img_id
-      }); //Mandamos todo  el cuerpo del objeto
+      });
       res.redirect("/admin/novedades")
        
     } else {
@@ -82,8 +81,8 @@ router.post("/agregar", async (req,res,next) => {
 
 //Para eliminar novedad
 router.get("/eliminar/:id", async (req,res,next) => {
-  var id= req.params.id
-  await novedadesModel.deleteNovedadesById(id)
+  var id = req.params.id
+  await rutinasModel.deleteRutinasById(id)
   res.redirect("/admin/novedades")
 })
 
@@ -92,7 +91,7 @@ router.get("/modificar/:id", async (req,res,next) => {
   
   var id= req.params.id
   console.log("req.params.id")
-  var novedad = await novedadesModel.getNovedadById(id)
+  var novedad = await rutinasModel.getRutinaById(id)
 
   res.render("admin/modificar", {
     layout: "admin/layout",
@@ -112,7 +111,7 @@ router.post("/modificar", async (req,res,next) => {
     }
     console.log(obj)
 
-    await novedadesModel.modificarNovedadById(obj, req.body.id)
+    await rutinasModel.modificarRutinaById(obj, req.body.id)
     res.redirect("/admin/novedades")
 
   }catch (error){

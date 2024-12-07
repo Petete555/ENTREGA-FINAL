@@ -2,7 +2,7 @@ var  mysql = require("mysql");
 var {createPool} = require("mysql2")
 var util = require("util");
 
-//creamos conexion con la DB mediante los datos pasados en el  archivo .env
+//creamos conexion con la DB mediante los datos pasados en el archivo .env
 var pool = createPool({
     connectionLimit: 10,
     host: process.env.MYSQL_HOST,

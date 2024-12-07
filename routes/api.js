@@ -1,32 +1,32 @@
 var express = require("express")
 var router = express.Router()
-var novedadesModel = require("./../models/novedadesModel")
+var rutinasModel = require("./../models/rutinasModel")
 var cloudinary = require("cloudinary").v2
 var nodemailer = require("nodemailer")
 
 router.get("/novedades", async (req, res, next) => {
-    let novedades = await novedadesModel.getNovedades()
+    let rutinas = await rutinasModel.getRutinas()
 
-    novedades = novedades.map(novedades => {
-        if(novedades.img_id){
-          const imagen = cloudinary.url(novedades.img_id, {
-            width:960,
-            height:550,
+    rutinas = rutinas.map(rutina => {
+        if(rutina.img_id){
+          const imagen = cloudinary.url(rutina.img_id, {
+            width:860,
+            height:300,
             crop: "fill"
           })
           return {
-            ...novedades,
+            ...rutina,
             imagen
           }
         }else{
           return{
-            ...novedades,
+            ...rutina,
             imagen: ""
           }
         }
     
       })
-      res.json(novedades)
+      res.json(rutinas)
 })
 
 router.post("/contacto", async (req,res,next) => {

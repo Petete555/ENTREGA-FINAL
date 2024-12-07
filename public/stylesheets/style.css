@@ -9,6 +9,9 @@ body{
   line-height: 20px;
   background-image: radial-gradient(circle, rgb(0, 0, 0), rgb(36, 35, 35));
   text-align:justify;
+  display: grid;
+  min-height: 100dvh;
+  grid-template-rows: auto 1fr auto;
 }
 h2{
   font-family:"Oswald" , "sans serif";
@@ -24,15 +27,6 @@ h2{
   font-size: larger;
 }
 /* HEADER */
-.boton-nav{
-  font-size: 15px;
-  position: absolute;
-  cursor: pointer;
-  top: 40px;
-  right: 40px;
-  display: none;
-}
-
 header{
   background-color: black;
   display: flex;
@@ -54,28 +48,13 @@ header{
   min-width: 30%;
 }
 
-nav ul{
-  display: flex;
-}
-nav ul li{
-  list-style: none;
-  padding: 15px;
-}
-nav ul li a{
-  color: white;
-  text-decoration: none;
-}
-nav ul li a:hover{
-  color: rgba(159, 159, 154, 0.855);
-}
-.activo{
-  border-bottom: 1px solid white;
-}
-.activo:hover{
-  border-bottom: 1px solid rgba(159, 159, 154, 0.855);
-}
-/*END HEADER*/
 
+/*END HEADER*/
+.container-login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 table{
   background-color: rgb(154, 153, 153);
 }
@@ -99,28 +78,5 @@ footer p{
   display: flex;
   justify-content: space-around;
   align-items: center;
-}
-.footer ul li{
-  list-style: none;
-}
-.footernav{
-  text-align: end;
-}
-.footernav ul li{
-  padding-top:  5px;
-}
-.footernav ul li a{
-  border-bottom: 1px solid white;
-}
-.footernav ul li a:hover{
-  border-bottom: 1px solid rgba(159, 159, 154, 0.855);
-}
-ul li a{
-  color: white;
-  text-decoration: none;
-}
-ul li a:hover{
-  color: rgba(159, 159, 154, 0.855);
-
 }
 /* END FOOTER */
